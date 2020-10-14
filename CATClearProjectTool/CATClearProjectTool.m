@@ -30,7 +30,7 @@
     return self;
 }
 
-#pragma mark -- dealloc
+#pragma mark - dealloc
 
 -(void)dealloc{
     _allClasses = nil;
@@ -42,13 +42,9 @@
     _pbxprojPath= nil;
 }
 
-#pragma mark -- public methods
+#pragma mark - public methods
 
-/**
- *  set filter classes
- *
- *  @param array filter classes name
- */
+///set filter classes 设置过滤类
 -(void)setFliterClasses:(NSArray *)array{
     if (!array || array.count < 1) return;
     [self _resetFilter];
@@ -59,14 +55,10 @@
     }
 }
 
-/**
- *  start search unused classes
- *
- *  @param path  .xcodeproj file path
- */
+///start search unused classes 开始搜索未使用类
 -(void)startSearchWithXcodeprojFilePath:(NSString *)path{
     if(!path || ![path hasSuffix:@".xcodeproj"]){
-        NSError* error = [NSError errorWithDomain:@"please input correct xcodeproj path!" code:-1 userInfo:nil];
+        NSError* error = [NSError errorWithDomain:@"请输入正确的xcodeproj路径!" code:-1 userInfo:nil];
         NSAlert* alert = [NSAlert alertWithError:error];
         [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:nil];
         
@@ -129,9 +121,7 @@
     }
 }
 
-/**
- *  clear unUsedClasses file and meta data in project file
- */
+///clear unUsedClasses file and meta data in project file 清除项目文件中未使用的类文件和元数据
 -(void)clearFileAndMetaData{
     //filter some classes eg. AppDelegate,main...
     [self _removeFilterClasses];
@@ -189,7 +179,7 @@
     });
 }
 
-#pragma mark -- private methods
+#pragma mark - private methods
 
 /**
  *  search all classes

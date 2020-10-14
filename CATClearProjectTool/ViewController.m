@@ -42,8 +42,22 @@
 }
 
 - (IBAction)clearButtonClicked:(id)sender {
-    [self _addFilter];
-    [self.clearProjectTool clearFileAndMetaData];
+    NSAlert *alert = [NSAlert new];
+    [alert addButtonWithTitle:@"确定"];
+    [alert addButtonWithTitle:@"取消"];
+    [alert setMessageText:@"确定删除所有未使用类？"];
+    [alert setAlertStyle:NSAlertStyleInformational];
+    [alert beginSheetModalForWindow:[self.view window] completionHandler:^(NSModalResponse returnCode) {
+        if(returnCode == NSAlertFirstButtonReturn){
+           //确定
+            [self _addFilter];
+            [self.clearProjectTool clearFileAndMetaData];
+        }else if(returnCode == NSAlertSecondButtonReturn){
+           //取消
+        }
+    }];
+//    [self _addFilter];
+//    [self.clearProjectTool clearFileAndMetaData];
 }
 
 #pragma mark -- CATClearProjectToolDelegate

@@ -26,25 +26,15 @@
 
 @property (nonatomic,weak) id<CATClearProjectToolDelegate> delegate;
 
-
-/**
- *  set filter classes. 
- *  the fliter classes will not be cleared
- *
- *  @param array filter classes name
- */
+/// set filter classes. 设置过滤类
+/// @param array filter classes name 过滤类名
 -(void)setFliterClasses:(NSArray *)array;
 
-/**
- *  start search unused classes
- *
- *  @param path .xcodeproj file path
- */
+/// start search unused classes 开始搜索未使用类
+/// @param path  .xcodeproj file path
 -(void)startSearchWithXcodeprojFilePath:(NSString *)path;
 
-/**
- *  clear unUsedClasses file and meta data in project file
- */
+/// clear unUsedClasses file and meta data in project file 清除项目文件中的未使用的类文件和元数据
 -(void)clearFileAndMetaData;
 
 @end
